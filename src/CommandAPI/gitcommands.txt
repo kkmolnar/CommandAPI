@@ -1,0 +1,5 @@
+in cmd go to the project folder
+git add .
+git commit -m “Added Model and Mock Repository”
+git push origin main
+ 
