@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using CommandAPI.Data;
 using CommandAPI.Models;
+using AutoMapper;
+using CommandAPI.Dtos;
 
 
 namespace CommandAPI.Controllers
@@ -16,10 +18,12 @@ namespace CommandAPI.Controllers
     {
 
         private readonly ICommandAPIRepo _repository;
+        private readonly IMapper _mapper;
 
-        public CommandsController(ICommandAPIRepo repository)
+        public CommandsController(ICommandAPIRepo repository, IMapper mapper)   
         {
-            _repository = repository;
+            _repository = repository;   //dependencies injected here
+            _mapper = mapper;  //An instance of IMapper will be injected by the DI system into our constructor.
         }
 
         /*
@@ -31,9 +35,11 @@ namespace CommandAPI.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<Command>> GetAllCommands()
         {
-            var commandItems =
-            _repository.GetAllCommands();
-            return Ok(commandItems);
+            var commandItems = _repository.GetAllCommands();
+            //return Ok(commandItems);
+
+            return Ok(_mapper.Map<IEnumerable<CommandReadDto>>(commandItems));
+
         }
 
         [HttpGet("{id}")]
@@ -44,7 +50,9 @@ namespace CommandAPI.Controllers
             {
                 return NotFound();
             }
-            return Ok(commandItem);
+            // return Ok(commandItem);
+            return Ok(_mapper.Map<CommandReadDto>(commandItem));
+
         }
     }
 }

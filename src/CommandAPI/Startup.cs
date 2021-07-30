@@ -11,6 +11,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.EntityFrameworkCore;
 using Npgsql;
+using AutoMapper;
 
 namespace CommandAPI
 {
@@ -48,6 +49,7 @@ namespace CommandAPI
         AddSingleton: A service is created once and reused.
             */
             services.AddControllers();
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             services.AddScoped<ICommandAPIRepo,SqlCommandAPIRepo>();
         }
 
