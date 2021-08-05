@@ -42,7 +42,7 @@ namespace CommandAPI.Controllers
 
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{id}", Name = "GetCommandById")]
         public ActionResult<Command> GetCommandById(int id)
         {
             var commandItem =_repository.GetCommandById(id);
@@ -54,5 +54,44 @@ namespace CommandAPI.Controllers
             return Ok(_mapper.Map<CommandReadDto>(commandItem));
 
         }
+
+
+        [HttpPost]
+        public ActionResult<CommandReadDto> CreateCommand (CommandCreateDto commandCreateDto)
+        {
+            var commandModel = _mapper.Map<Command>(commandCreateDto);
+            _repository.CreateCommand(commandModel);
+            _repository.SaveChanges();
+            var commandReadDto = _mapper.Map<CommandReadDto>
+            (commandModel);
+            return CreatedAtRoute(nameof(GetCommandById),
+            new { Id = commandReadDto.Id }, commandReadDto);
+        }
+
+
+        [HttpPut("{id}")]
+        public ActionResult UpdateCommand(int id,CommandUpdateDto commandUpdateDto)
+        {
+            var commandModelFromRepo =  _repository.GetCommandById(id);
+            if (commandModelFromRepo == null)
+            {
+                return NotFound();
+            }
+            _mapper.Map(commandUpdateDto,commandModelFromRepo);
+
+            /*
+             This is where the actual update occurs! We use a slightly different form
+of the Map method on our _mapper instance to map the DTO to our
+Command. By reference the Command object is updated in the DB
+Context. Again, this is not yet re
+            
+             */
+            _repository.UpdateCommand(commandModelFromRepo);
+            _repository.SaveChanges();// nothing  rrequired here
+            return NoContent();
+        }
+
+
+
     }
 }

@@ -19,7 +19,13 @@ namespace CommandAPI.Data
 
         public void CreateCommand(Command cmd)
         {
-            throw new NotImplementedException();
+            if (cmd == null)
+            {
+                throw new ArgumentNullException(nameof(cmd));
+            }
+            _context.CommandItems.Add(cmd);
+          
+
         }
 
         public void DeleteCommand(Command cmd)
@@ -39,12 +45,14 @@ namespace CommandAPI.Data
 
         public bool SaveChanges()
         {
-            throw new NotImplementedException();
+            return (_context.SaveChanges() >= 0);
         }
 
         public void UpdateCommand(Command cmd)
         {
-            throw new NotImplementedException();
+           
+
+
         }
     }
 }
