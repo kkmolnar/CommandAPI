@@ -12,6 +12,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.EntityFrameworkCore;
 using Npgsql;
 using AutoMapper;
+using Newtonsoft.Json.Serialization;
+
 
 namespace CommandAPI
 {
@@ -48,7 +50,11 @@ namespace CommandAPI
         AddScoped: A service is created once per client request(connection).
         AddSingleton: A service is created once and reused.
             */
-            services.AddControllers();
+            services.AddControllers().AddNewtonsoftJson(s=>
+            {
+                s.SerializerSettings.ContractResolver = new
+                CamelCasePropertyNamesContractResolver();
+            });
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             services.AddScoped<ICommandAPIRepo,SqlCommandAPIRepo>();
         }
