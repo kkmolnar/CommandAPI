@@ -14,11 +14,12 @@ using Microsoft.AspNetCore.JsonPatch;
 namespace CommandAPI.Controllers
 {
     /*  [Route("api/commands")]*/
+
     [Route("api/[controller]")]
     [ApiController]
     public class CommandsController : ControllerBase
     {
-
+        //aa
         private readonly ICommandAPIRepo _repository;
         private readonly IMapper _mapper;
 
