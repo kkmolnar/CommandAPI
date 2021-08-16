@@ -5,11 +5,16 @@ VisualStudioVersion = 16.6.30114.105
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{4586652B-1946-4DE6-A822-00BC10476A8C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommandAPI", "src\CommandAPI\CommandAPI.csproj", "{96038B13-84A3-4B76-957E-642D1D50FAD0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CommandAPI", "src\CommandAPI\CommandAPI.csproj", "{96038B13-84A3-4B76-957E-642D1D50FAD0}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{27568EA1-A6E5-4490-AF23-28A1BC698107}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommandAPI.Tests", "test\CommandAPI.Tests\CommandAPI.Tests.csproj", "{DFEA22EC-790C-4FDB-86BD-7E7899E30ADE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CommandAPI.Tests", "test\CommandAPI.Tests\CommandAPI.Tests.csproj", "{DFEA22EC-790C-4FDB-86BD-7E7899E30ADE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{3C88AA60-68F5-440F-A17F-B4A2E92CBE53}"
+	ProjectSection(SolutionItems) = preProject
+		azure-pipelines.yml = azure-pipelines.yml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,9 +24,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 		Release|x64 = Release|x64
 		Release|x86 = Release|x86
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{96038B13-84A3-4B76-957E-642D1D50FAD0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -49,8 +51,14 @@ Global
 		{DFEA22EC-790C-4FDB-86BD-7E7899E30ADE}.Release|x86.ActiveCfg = Release|Any CPU
 		{DFEA22EC-790C-4FDB-86BD-7E7899E30ADE}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{96038B13-84A3-4B76-957E-642D1D50FAD0} = {4586652B-1946-4DE6-A822-00BC10476A8C}
 		{DFEA22EC-790C-4FDB-86BD-7E7899E30ADE} = {27568EA1-A6E5-4490-AF23-28A1BC698107}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {693D4A85-DE89-438C-85F7-2C5E667C1331}
 	EndGlobalSection
 EndGlobal
