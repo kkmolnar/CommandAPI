@@ -96,7 +96,7 @@ namespace CommandAPI.Tests
         }
 
 
-
+        /*
         [Fact]
         public void GetAllCommands_ReturnsCorrectType_WhenDBHasOneResource()
         {
@@ -109,7 +109,7 @@ namespace CommandAPI.Tests
             Assert.IsType<ActionResult<IEnumerable<CommandReadDto>>>(result);
         }
 
-
+        */
 
     }
 
